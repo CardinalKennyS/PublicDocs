@@ -1,0 +1,50 @@
+---
+title: "Enterprise Policy Engine"
+description: "Apply configurable rules that produce explainable ALLOW, REVIEW, and BLOCK decisions."
+icon: "list-check"
+---
+
+The Enterprise Policy Engine converts risk findings and business controls into one explainable action.
+
+<Warning title="Pilot development">
+  Policy v0 and its response contract are under review for the controlled pilot. Persisted tenant configuration, version history, approval workflows, and immutable decision audit remain 30-day platform work.
+</Warning>
+
+## Decision semantics
+
+| Decision | Meaning | Protected-flow behaviour |
+| --- | --- | --- |
+| `ALLOW` | No matched rule requires stronger action | Continue only when the checked intent still matches the transaction to be submitted. |
+| `REVIEW` | Evidence is incomplete, degraded, unusual, or requires human approval | Pause and show the matched rule, evidence, source, and freshness. |
+| `BLOCK` | A high-confidence rule prohibits the transaction | Stop before approval, signature, funding, or settlement. |
+
+## Explainability contract
+
+Return the policy ID, version, and each matched rule with the decision:
+
+```json
+{
+  "policy": {
+    "id": "cardinal-enterprise-demo-v0",
+    "version": "0.1.0",
+    "matched_rules": [
+      {
+        "code": "review_degraded_intelligence",
+        "action": "REVIEW",
+        "explanation": "Required intelligence evidence is incomplete.",
+        "evidence_codes": ["intelligence_provider_unavailable"],
+        "required_approvals": { "type": "human", "count": 1 }
+      }
+    ]
+  }
+}
+```
+
+## Precedence and safety
+
+- Apply `BLOCK` before `REVIEW`, and `REVIEW` before `ALLOW`.
+- Return `ALLOW` only when the policy is valid and no stronger rule matches.
+- Fail closed to `REVIEW` or `BLOCK` when providers fail, policy versions are invalid, or mandatory evidence is missing.
+- Bind the decision record to the policy version, checked intent, evidence, timestamps, and final action.
+- Display decisions in the browser. Keep authoritative risk and policy logic on the backend.
+

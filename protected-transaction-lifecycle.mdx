@@ -1,0 +1,56 @@
+---
+title: "Protected Transaction Lifecycle"
+description: "Connect SafeSend, SafeReceive, policy, simulation, and Escrow into one traceable lifecycle."
+icon: "arrows-rotate"
+---
+
+Cardinal is building one protected lifecycle around the working products. This direction does not require rebuilding SafeSend, SafeReceive, Escrow, or the Customer Portal.
+
+```text
+Transaction intent
+→ Intelligence and simulation evidence
+→ Enterprise policy decision
+→ ALLOW / REVIEW / BLOCK
+→ SafeSend, SafeReceive, direct flow, or Escrow
+→ Settlement events and audit record
+```
+
+<Warning title="Integration in progress">
+  The products and API foundations exist at different MVP, pilot, testnet, and contract-implementation levels. A shared correlation ID, lifecycle ledger, and complete Portal view remain 30-day integration work.
+</Warning>
+
+## Lifecycle requirements
+
+<Steps>
+  <Step title="Create the canonical intent">
+    Create an immutable record of the exact transaction that Cardinal will evaluate.
+  </Step>
+  <Step title="Evaluate before value moves">
+    Evaluate the exact intent before approval, signature, funding, acceptance, or settlement.
+  </Step>
+  <Step title="Record the decision">
+    Store the request ID, policy version, matched rules, evidence source and freshness, and simulation mode.
+  </Step>
+  <Step title="Enforce the policy">
+    Stop `BLOCK` decisions. Require the configured approval for `REVIEW` decisions.
+  </Step>
+  <Step title="Use the selected product">
+    Route approved activity through the existing SafeSend, SafeReceive, direct, or Escrow flow.
+  </Step>
+  <Step title="Correlate settlement">
+    Bind transaction hashes and contract events to the original decision and display the outcome in the Portal.
+  </Step>
+</Steps>
+
+## Escrow extensions
+
+Keep the current buyer-and-seller and multisig Escrow implementations as the foundation.
+
+Bind compliance and counterparty approvals to escrow terms and the Cardinal security context before settlement. Treat milestone settlement and oracle conditions as longer-term work until a reviewed release confirms them.
+
+## Failure handling
+
+Follow the approved fail-closed policy when intelligence, simulation, policy, or evidence storage is unavailable.
+
+Do not bypass controls, lose the correlation record, or default to `ALLOW`.
+

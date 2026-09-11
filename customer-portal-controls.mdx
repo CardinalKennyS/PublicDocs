@@ -1,0 +1,31 @@
+---
+title: "Customer Portal Controls"
+description: "Configure policies and review decisions, intelligence, approvals, and audit records."
+icon: "sliders"
+---
+
+The existing Customer Portal is the control and evidence surface for the protected transaction lifecycle.
+
+<Warning title="30-day extension">
+  The Portal exists. Policy configuration, complete lifecycle audit, and expanded intelligence visibility are planned extensions. The browser is not the authoritative policy or risk engine.
+</Warning>
+
+## Planned controls
+
+| Area | Portal responsibility |
+| --- | --- |
+| Policies | Select and configure permitted rules and thresholds with version history. |
+| Decisions | Display `ALLOW`, `REVIEW`, or `BLOCK` and each matched rule. |
+| Intelligence | Display sanitized evidence, source, confidence, observation time, expiry, and degraded state. |
+| Approvals | Record required human, counterparty, compliance, or multisig approvals. |
+| Lifecycle | Correlate intent, decision, approval, contract action, and settlement outcome. |
+| Audit | Provide tenant-scoped, tamper-evident records and controlled exports. |
+
+## Security boundaries
+
+- Keep provider credentials and raw restricted data off the client.
+- Enforce tenant isolation and role-based access on the backend.
+- Record the actor, time, policy version, reason, and previous value for configuration changes.
+- Do not let a user-interface change overwrite historical decisions.
+- Redact or hash sensitive evidence when retention or licensing terms require it.
+

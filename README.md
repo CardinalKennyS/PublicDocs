@@ -1,55 +1,46 @@
-# Mintlify Starter Kit
+# Cardinal public documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+This repository is the canonical Mintlify source for [docs.cardinalweb3.com](https://docs.cardinalweb3.com).
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Deployment
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- **Source:** `CardinalKennyS/PublicDocs`
+- **Production branch:** `main`
+- **Preview:** Mintlify creates a preview deployment for pull-request branches.
+- **Release:** The Mintlify GitHub app deploys the merged `main` branch to `https://cardinal-web3.mintlify.app`, which serves the public custom domain.
+- **Owner:** Kenneth Scally approves public product wording and production publication.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+The `Cardinal-Web3/cardinal-docs` repository is an internal documentation and drafting workspace. A merge there does not update the live Mintlify site.
 
-## AI-assisted writing
+## Reviewed publishing workflow
 
-Set up your AI coding tool to work with Mintlify:
+1. Create a focused branch from `main`.
+2. Open a draft pull request and link the relevant Cardinal roadmap issue.
+3. Check the Mintlify preview for navigation, links, code examples, mobile layout, and status labels.
+4. Obtain technical review for product, API, data, smart-contract, security, or compliance claims.
+5. Obtain Kenneth's approval for investor-facing and public wording.
+6. Mark the pull request ready and merge it into `main`.
+7. Verify the Mintlify deployment and the affected pages on the public domain.
+
+Do not commit provider credentials, restricted data, partner payloads, production secrets, or unapproved contract addresses.
+
+## Rollback
+
+If a published change is inaccurate or breaks the site:
+
+1. Revert the merge commit through a reviewed pull request.
+2. Merge the revert into `main`.
+3. Confirm that Mintlify redeploys the last approved content.
+4. Record the incident and corrective action on the linked GitHub issue.
+
+Avoid rewriting `main` history or force-pushing a rollback.
+
+## Local preview
+
+Run the Mintlify development server from the repository root:
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
-
-## Publishing changes
-
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+See the [Mintlify documentation](https://mintlify.com/docs) for supported installation and preview options.

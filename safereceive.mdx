@@ -1,0 +1,50 @@
+---
+title: "SafeReceive"
+description: "Protect incoming funds with direction-aware source screening and provenance evidence."
+icon: "inbox"
+---
+
+SafeReceive extends Cardinal's existing transaction check. It does not create a second risk engine or replace SafeSend.
+
+<Warning title="Controlled pilot">
+  Cardinal is connecting the existing SafeReceive experience to the same normalized intelligence and policy contract used by SafeSend. Source screening and explainable demo decisions are pilot work. Deeper provenance tracing and illicit-funds exposure remain 30-day work.
+</Warning>
+
+## Incoming check
+
+Set `direction` to `incoming`. Cardinal treats `from_address` as the source of funds and `to_address` as the receiving wallet.
+
+```json
+{
+  "from_address": "0xSource",
+  "to_address": "0xReceivingWallet",
+  "chain": "ethereum",
+  "token": "USDC",
+  "amount": 5000,
+  "direction": "incoming",
+  "policy_id": "cardinal-enterprise-demo-v0"
+}
+```
+
+## Response requirements
+
+SafeReceive keeps the normal risk response and adds:
+
+- `screening.direction` to confirm incoming evaluation
+- `screening.subject_address` to identify the screened source
+- `screening.provider_mode` to distinguish local, external-ready, and degraded results
+- `screening.evidence` with category, severity, confidence, source, and freshness
+- `policy.matched_rules` to explain the final action
+
+## Investor-demo scenarios
+
+| Scenario | Expected result |
+| --- | --- |
+| Clean source with current evidence | `ALLOW` |
+| Unclear, stale, incomplete, or degraded provenance | `REVIEW` with the matched rule |
+| High-confidence illicit exposure | `BLOCK` with source and freshness |
+
+Recheck when the source, destination, network, token, amount, or relevant policy changes.
+
+Treat the result as a security decision for the checked intent. Do not present it as a legal opinion or a guarantee that every historical transaction was traced.
+
