@@ -1,0 +1,33 @@
+---
+title: "Transaction Simulation"
+description: "Explain expected transaction effects and distinguish fixtures, heuristics, and live simulation."
+icon: "flask"
+---
+
+Transaction simulation explains what a proposed transaction is expected to do before a protected flow requests approval or signature.
+
+<Warning title="Adapter contract defined">
+  The pilot defines an explainable effects contract and adapter boundary. Integration of an approved live simulation provider remains 30-day work. Do not present fixture or heuristic output as live RPC simulation.
+</Warning>
+
+## Expected effects
+
+Where the selected mode supports them, show:
+
+- assets sent and received
+- approvals or allowance changes
+- contract calls and relevant permissions
+- fees and material balance changes
+- warnings, findings, and confidence
+- whether the result came from a fixture, heuristic, live provider, or degraded fallback
+
+## Integrity rules
+
+- Simulate the exact canonical intent that the user will sign.
+- Run simulation again when any protected field changes.
+- Never replace a failed live simulation with a successful fixture without showing the mode change.
+- Mark unsupported networks and transaction types clearly.
+- Feed material simulation findings into the same policy engine used by SafeSend and SafeReceive.
+
+Simulation improves explainability. It does not guarantee final chain state. State changes, transaction ordering, malicious infrastructure, and provider limits can cause execution to differ from a prediction.
+

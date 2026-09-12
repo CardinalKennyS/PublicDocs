@@ -1,0 +1,60 @@
+---
+title: "Intelligence Evidence"
+description: "Understand Cardinal evidence sources, confidence, freshness, and provenance."
+icon: "diagram-project"
+---
+
+Cardinal Intelligence is the evidence layer beneath SafeSend, SafeReceive, policy, simulation, and protected settlement.
+
+<Warning title="Controlled pilot">
+  Normalized evidence and replaceable provider adapters are connected in the controlled pilot. The reserved investor BLOCK scenario uses clearly labelled synthetic evidence. External coverage depends on approved licences, credentials, networks, and provider availability. Cardinal does not claim universal tracing or complete compliance coverage.
+</Warning>
+
+## Evidence model
+
+Each evidence item identifies the screened subject, chain, category, severity, confidence, source, observation time, optional expiry, and supporting tags.
+
+Public responses expose sanitized evidence. They must not expose provider secrets, raw licensed payloads, or internal investigation notes.
+
+```json
+{
+  "category": "stolen_funds_exposure",
+  "severity": "HIGH",
+  "confidence": 0.97,
+  "source": {
+    "id": "approved-source-id",
+    "name": "Approved intelligence source",
+    "kind": "licensed"
+  },
+  "observed_at": "2026-09-11T10:00:00.000Z",
+  "expires_at": "2026-09-12T10:00:00.000Z"
+}
+```
+
+## Provider modes
+
+| Mode | Meaning | Required handling |
+| --- | --- | --- |
+| `local_heuristic` | Cardinal-owned rules and local signals only | Do not describe the result as complete external provenance. |
+| `external_ready` | One or more approved external adapters supplied evidence | Show the source and freshness. Retain the decision record. |
+| `degraded` | A required provider was unavailable, unsupported, timed out, or could not authenticate | Never silently convert the result into `ALLOW`. |
+
+## Demonstration evidence
+
+The controlled investor scenario uses a reserved wallet address and synthetic evidence for stolen-funds exposure, sanctions-list exposure, and illicit-service association. The interface and comprehensive report identify these records as demonstration fixtures and retain their source references and timestamps.
+
+This proves evidence normalization, policy enforcement, and report generation without making an unsupported allegation about a real wallet. In production, a sanctions claim must come from an authorised current source and should be described as evidence linking a wallet or entity to a sanctions list—not as a sanctioned bank account unless a separate banking-data source supports that statement.
+
+## Source and freshness rules
+
+- Identify the source and observation time for every externally derived claim.
+- Do not display expired or unavailable evidence as current.
+- Route conflicting or incomplete evidence to `REVIEW` unless an approved policy requires `BLOCK`.
+- Use provider data as evidence. Keep the final decision in Cardinal policy.
+- Record licensing, retention, deletion, attribution, and redistribution restrictions before enabling a provider.
+
+## Proprietary intelligence
+
+Cardinal may build an internal graph from permitted scan outcomes, verified reports, address relationships, contract observations, and settlement results.
+
+Keep raw licensed data separate when provider terms prohibit reuse. Protect stored evidence with tenant isolation, access controls, retention rules, and an audit trail.

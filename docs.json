@@ -51,6 +51,19 @@
         ]
       },
       {
+        "group": "Transaction Control",
+        "icon": "shield-halved",
+        "pages": [
+          "intelligence-evidence",
+          "policy-engine",
+          "safereceive",
+          "transaction-simulation",
+          "protected-transaction-lifecycle",
+          "customer-portal-controls",
+          "delivery-horizons"
+        ]
+      },
+      {
         "group": "Developers",
         "icon": "code",
         "pages": [
