@@ -7,8 +7,12 @@ icon: "inbox"
 SafeReceive extends Cardinal's existing transaction check. It does not create a second risk engine or replace SafeSend.
 
 <Warning title="Controlled pilot">
-  Cardinal is connecting the existing SafeReceive experience to the same normalized intelligence and policy contract used by SafeSend. Source screening and explainable demo decisions are pilot work. Deeper provenance tracing and illicit-funds exposure remain 30-day work.
+  The connected SafeReceive pilot screens the source wallet, returns normalized evidence and applies the same policy contract used by the Protection API. The investor-demonstration BLOCK address uses clearly labelled synthetic evidence. Licensed production-provider coverage and deeper provenance tracing remain roadmap work.
 </Warning>
+
+<Card title="Open the SafeReceive pilot" icon="arrow-up-right-from-square" href="https://cardinalweb3.com/app/receive">
+  Run the controlled ALLOW, REVIEW and BLOCK scenarios and generate a comprehensive report.
+</Card>
 
 ## Incoming check
 
@@ -44,7 +48,35 @@ SafeReceive keeps the normal risk response and adds:
 | Unclear, stale, incomplete, or degraded provenance | `REVIEW` with the matched rule |
 | High-confidence illicit exposure | `BLOCK` with source and freshness |
 
+The reserved BLOCK scenario demonstrates three synthetic evidence categories: stolen-funds exposure, sanctions-list exposure, and illicit-service association. Each record includes a Cardinal demonstration reference, confidence, severity, and observation time. Do not represent this controlled fixture as a claim about a real person, business, bank account, or wallet.
+
+## Comprehensive Risk Report
+
+After a payment check, an authorised partner can generate a separately metered, immutable report linked to the original `request_id`.
+
+```http
+GET /api/reports/pricing
+POST /api/reports/address
+```
+
+```json
+{
+  "request_id": "req_2f57f5db-5f78-46db-9a49-534d99b37d08",
+  "business_reference": "Property deposit · Client 1842"
+}
+```
+
+The report retains:
+
+- the screened source wallet and incoming-payment details
+- the original decision, risk score, and check time
+- findings and matched policy rules
+- named evidence sources, confidence, freshness, and references
+- provider coverage and transaction-effects mode
+- methodology and limitations
+
+The live controlled pilot records report generation separately from the standard SafeReceive check. Customer charging, approved pricing, and treasury settlement must be configured before commercial billing is represented as active.
+
 Recheck when the source, destination, network, token, amount, or relevant policy changes.
 
 Treat the result as a security decision for the checked intent. Do not present it as a legal opinion or a guarantee that every historical transaction was traced.
-
