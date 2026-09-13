@@ -60,6 +60,7 @@
           "intelligence-evidence",
           "policy-engine",
           "transaction-simulation",
+          "protected-settlement-engine",
           "protected-transaction-lifecycle",
           "delivery-horizons"
         ]
