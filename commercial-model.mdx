@@ -1,0 +1,124 @@
+---
+title: "Commercial Model"
+description: "How Cardinal can generate revenue across payment checks, reports, protected transfers, settlement and enterprise controls."
+icon: "chart-line"
+---
+
+Cardinal's commercial model follows the protected transaction lifecycle. The same customer can use one product or combine payment checks, policy controls, settlement and reporting.
+
+<Warning title="Commercial status">
+  This page describes intended charging points. It does not publish a price list, guarantee revenue, or represent an exchange, wallet, custodian or enterprise contract. Pricing, network coverage and production scope are agreed during onboarding.
+</Warning>
+
+## Revenue streams
+
+| Product | Revenue model | Charging event | Current status |
+| --- | --- | --- | --- |
+| Protection API | Platform subscription and usage | A partner submits a payment or transaction check | Pilot foundation |
+| SafeReceive | Per-check usage and optional premium report | A business screens an incoming payment or generates an enhanced report | Controlled pilot |
+| SafeSend | Protected-transfer fee | The SafeSend contract releases an approved transfer | Arbitrum Sepolia testnet |
+| Escrow | Settlement fee | The Escrow contract releases the seller payout | Arbitrum Sepolia testnet |
+| Enterprise controls | Annual platform licence | An organisation uses policies, approvals, reporting, administration and white-labelling | Commercial roadmap |
+| Embedded partner workflows | Platform, usage or revenue-share agreement | A wallet, exchange, custodian or payment provider embeds Cardinal | Partner-specific roadmap |
+
+## Protection API and SafeReceive
+
+A platform can call the Protection API from its trusted backend before it credits an incoming payment, releases a withdrawal or asks a wallet to sign.
+
+Commercial plans can combine:
+
+- a recurring platform subscription;
+- usage measured per completed protection check;
+- agreed volume tiers;
+- premium comprehensive reports;
+- enterprise policy, approval and reporting controls.
+
+The API key must remain server-side. Usage and billing records must be attributable to the correct partner and tenant.
+
+## SafeSend fee flow
+
+The SafeSend contract exposes its fee rate and fee recipient. The application reads the current contract configuration and shows the Cardinal fee before wallet approval.
+
+```text
+Sender funds protected transfer
+→ SafeSend holds testnet funds
+→ transfer is released
+→ recipient receives the amount less the configured Cardinal fee
+→ configured contract fee recipient receives the Cardinal fee
+```
+
+Network gas is separate. The connected wallet pays gas to the blockchain. Cardinal must not describe network gas as company revenue.
+
+A cancelled SafeSend returns the transferred amount according to the contract rules. Network gas already spent is not refundable.
+
+## Escrow fee flow
+
+The Escrow contract also exposes its fee rate and fee recipient. The application displays the expected fee and seller payout before the buyer approves the agreement.
+
+```text
+Buyer funds Escrow
+→ parties follow the testnet agreement lifecycle
+→ Escrow releases settlement
+→ seller receives the credited amount less the configured Cardinal fee
+→ configured contract fee recipient receives the Cardinal fee
+```
+
+The current interface states that a dispute resolved in the buyer's favour refunds the credited amount without a Cardinal settlement fee. Always verify the deployed contract configuration and rules for the selected environment.
+
+## Exchange and wallet distribution
+
+An exchange does not need to move custody to Cardinal. Its backend submits the final deposit or withdrawal intent, consumes the `ALLOW`, `REVIEW` or `BLOCK` decision, and records the result with the exchange transaction ID.
+
+A wallet or vault can place the same decision before signing. It retains control of keys and signatures while Cardinal supplies the evidence-led decision and protected-settlement options.
+
+Possible commercial structures include:
+
+- enterprise API subscription;
+- usage tiers;
+- embedded or white-labelled platform licence;
+- protected-settlement fees;
+- negotiated partner revenue share.
+
+Do not describe any structure as agreed until both the technical integration and commercial contract are confirmed.
+
+## Treasury readiness
+
+The configured contract fee recipient is the technical destination for SafeSend and Escrow fees. Before any production or mainnet launch, Cardinal must approve:
+
+- the production treasury wallet or multisig;
+- authorised signers and approval quorum;
+- fee-change authority and limits;
+- settlement reconciliation and accounting;
+- key recovery and incident procedures;
+- supported networks, tokens and contract addresses;
+- legal, tax, licensing and jurisdictional review.
+
+Do not use a personal wallet or a demonstration wallet as the production treasury.
+
+## What investors can see today
+
+The controlled demonstration can show:
+
+- SafeReceive `ALLOW`, `REVIEW` and `BLOCK` scenarios;
+- a comprehensive report charging point;
+- a white-labelled business payment request and portal;
+- SafeSend and Escrow fee previews on Arbitrum Sepolia;
+- the Protection API integration point for exchanges and wallets;
+- the technical contract fee-recipient model.
+
+It must not claim unrestricted mainnet settlement, confirmed production provider coverage, signed partner integrations, approved pricing or realised recurring revenue.
+
+<CardGroup cols={2}>
+  <Card title="Exchange integration" icon="building-columns" href="/exchange-integration">
+    Review the pre-deposit and pre-withdrawal integration pattern.
+  </Card>
+  <Card title="Wallet integration" icon="wallet" href="/wallet-integration">
+    Review the pre-signature integration pattern.
+  </Card>
+  <Card title="SafeSend" icon="paper-plane" href="/safesend">
+    Review the current protected-transfer fee path.
+  </Card>
+  <Card title="Escrow" icon="handshake" href="/escrow">
+    Review the current settlement-fee path.
+  </Card>
+</CardGroup>
