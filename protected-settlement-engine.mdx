@@ -1,0 +1,108 @@
+---
+title: "Protected Settlement Engine"
+description: "Cardinal's roadmap for risk-aware, policy-controlled digital asset settlement."
+icon: "route"
+---
+
+The Cardinal Protected Settlement Engine is the orchestration layer above SafeSend, SafeReceive, the Enterprise Policy Engine, and Escrow.
+
+> Cardinal does not only assess whether a transaction should proceed. The target architecture determines whether, when, and under what approved conditions value can settle.
+
+<Warning title="Roadmap capability">
+  The controlled pilot demonstrates the component products and an explainable protected lifecycle. Continuous monitoring, cryptographic Transaction Passports, advanced settlement conditions, and agent mandates are staged roadmap capabilities and must not be represented as production features today.
+</Warning>
+
+## Platform architecture
+
+```text
+CARDINAL INTELLIGENCE
+Address graph · threat intelligence · provenance · counterparty intelligence
+
+↓
+
+CARDINAL PROTECTION
+Simulation · SafeSend · SafeReceive · explainable risk
+
+↓
+
+CARDINAL CONTROL
+Policy Engine · ALLOW / REVIEW / BLOCK · approvals · future agent mandates
+
+↓
+
+CARDINAL PROTECTED SETTLEMENT
+Conditional Escrow · risk-aware routing · continuous monitoring · multisig
+
+↓
+
+CARDINAL TRUST RECORD
+Transaction Passport · evidence · approvals · settlement outcome
+```
+
+Future agentic security sits across these layers, applying a human-approved mandate from transaction intent through settlement. Cardinal does not require custody of customer private keys to enforce this architecture.
+
+## Core capabilities
+
+### Risk-conditional settlement
+
+Store the approved policy, evidence references, risk threshold, and review requirements with the settlement intent. If an authorised re-screening check produces a material new signal before release, pause settlement and require the configured review.
+
+### Multi-condition Escrow
+
+Extend the working Escrow implementation rather than replacing it. Conditions may combine time, counterparty verification, compliance approval, multisig approval, risk thresholds, milestones, and—after a reviewed adapter design—external attestations or oracle events.
+
+### Continuous settlement monitoring
+
+Re-evaluate the relevant counterparties and evidence while value is pending. Every check must record its provider mode, source, observation time, freshness, policy version, and effect on the settlement state.
+
+### Protected payment mode
+
+SafeSend can offer a future `Send protected` route for high-value or elevated-risk transactions. Policy selects direct execution, additional approval, protected settlement, or block. The user must see the route and reason before signing.
+
+### Cardinal Transaction Passport
+
+Every protected transaction should produce a tamper-evident Trust Record containing:
+
+- the transaction intent and correlation ID;
+- evidence references and freshness, without exposing restricted raw data;
+- policy version and matched rules;
+- approvals and settlement conditions;
+- transaction and contract event references;
+- final settlement, cancellation, refund, pause, or block outcome.
+
+This is an operational security and audit record—not a regulatory certificate or guarantee that funds are lawful.
+
+## Example dynamic routing
+
+| Illustrative policy band | Route |
+| --- | --- |
+| Risk 0–29 | Direct execution |
+| Risk 30–59 | Additional approval |
+| Risk 60–79 | Protected settlement |
+| Risk 80+ | Block |
+
+These bands are examples only. Each production organisation must approve its own policy, asset coverage, thresholds, escalation rules, and legal/compliance process.
+
+## Delivery order
+
+1. Complete the canonical correlation ID and lifecycle event ledger.
+2. Persist and version enterprise policy and approval records.
+3. Add settlement-routing decisions as an additive API contract.
+4. Add scheduled re-screening and an idempotent settlement-pause workflow.
+5. Integrate the existing Escrow and multisig implementations behind reviewed adapters.
+6. Generate a signed or anchored Transaction Passport without putting PII or restricted intelligence on-chain.
+7. Add milestones and external attestations only after threat modelling and contract review.
+8. Add agent mandates only after the human-controlled lifecycle is production hardened.
+
+## Production gates
+
+- Independent smart-contract and application security review.
+- Idempotent pause/release handling with tested race conditions.
+- Explicit policy for provider outages, stale evidence, false positives, and manual overrides.
+- Tenant isolation, role-based approvals, immutable audit records, and support escalation.
+- Approved intelligence licensing, attribution, retention, and deletion controls.
+- Approved treasury, signer, upgrade, incident-response, and reconciliation processes.
+
+<Card title="Review the protected lifecycle" icon="arrows-rotate" href="/protected-transaction-lifecycle">
+  See how the current products connect into the settlement architecture.
+</Card>

@@ -58,3 +58,14 @@ This proves evidence normalization, policy enforcement, and report generation wi
 Cardinal may build an internal graph from permitted scan outcomes, verified reports, address relationships, contract observations, and settlement results.
 
 Keep raw licensed data separate when provider terms prohibit reuse. Protect stored evidence with tenant isolation, access controls, retention rules, and an audit trail.
+
+## Attribution and source-of-funds rules
+
+- Distinguish a direct match from indirect exposure and record the number of hops when known.
+- Identify whether an entity attribution is verified, provider-attributed, customer-supplied, inferred, or synthetic demonstration data.
+- Do not turn a wallet or exchange attribution into a bank-account claim without a separate authorised source.
+- Preserve the source reference and observation time needed to reproduce the decision.
+- Keep licensed provider facts separate from Cardinal-owned observations, policy outcomes, and derived graph relationships.
+- Route ambiguous, conflicting, stale, or incomplete provenance to `REVIEW` unless an approved policy requires another action.
+
+Cardinal's proprietary advantage should come from permitted observations, normalized evidence, graph relationships, decision outcomes, and settlement feedback. It should not depend on copying or redistributing restricted provider datasets.

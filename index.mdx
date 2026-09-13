@@ -1,14 +1,24 @@
 ---
 title: "Cardinal Documentation"
-description: "Learn how Cardinal protects digital asset transactions before value moves."
+description: "Learn how Cardinal helps businesses screen, control, receive, and settle digital asset payments."
 sidebarTitle: "Overview"
 icon: "shield-check"
 keywords: ["Cardinal", "Web3 security", "SafeSend", "Protection API", "digital asset security"]
 ---
 
-Cardinal is building the trust and protection layer for digital asset transactions.
+Cardinal is building the trust, control, and evidence layer for digital asset transactions.
 
-It evaluates transaction intent before wallet signature, explains risk clearly, and routes users into safer settlement flows.
+It helps a business check a payment before value moves, apply an `ALLOW`, `REVIEW`, or `BLOCK` policy, and retain an explainable record of the decision.
+
+<CardGroup cols={2}>
+  <Card title="Open the Cardinal platform" icon="arrow-up-right-from-square" href="https://cardinalweb3.com/app">
+    Choose SafeSend, SafeReceive, Escrow, or business customer access from one product gateway.
+  </Card>
+
+  <Card title="Business customer sign-in" icon="building-shield" href="https://cardinalweb3.com/portal/login">
+    Open the controlled customer-portal sign-in for organisation-specific payment workflows.
+  </Card>
+</CardGroup>
 
 <CardGroup cols={2}>
   <Card title="Protection API" icon="shield-check" href="/protection-api">
@@ -19,16 +29,20 @@ It evaluates transaction intent before wallet signature, explains risk clearly, 
     Scan a token transfer before approval and contract execution.
   </Card>
 
+  <Card title="SafeReceive" icon="inbox" href="/safereceive">
+    Screen the source of an incoming payment and retain evidence for the business decision.
+  </Card>
+
+  <Card title="Business Customer Portal" icon="building" href="/customer-portal-controls">
+    Create payment requests, review incoming-payment decisions, and organise evidence by customer or business transaction.
+  </Card>
+
   <Card title="Programmable Escrow" icon="handshake" href="/escrow">
     Coordinate non-custodial buyer and seller settlement with release, refund, timeout, and dispute controls.
   </Card>
 
   <Card title="Product status" icon="signal" href="/product-status">
     See what is available in the connected MVP, what is in pilot, and what remains under development.
-  </Card>
-
-  <Card title="SafeReceive" icon="inbox" href="/safereceive">
-    Screen incoming-funds sources with direction-aware intelligence and policy controls.
   </Card>
 
   <Card title="Delivery horizons" icon="road" href="/delivery-horizons">
@@ -57,6 +71,13 @@ It evaluates transaction intent before wallet signature, explains risk clearly, 
   Cardinal is currently a connected MVP and controlled pilot environment. SafeSend uses a testnet flow, while production intelligence providers, mainnet deployment, external audits, and enterprise operations remain subject to verification.
 </Warning>
 
-## Built for digital finance
+## Built for organisations handling digital assets
 
-Cardinal is designed for wallets, exchanges, custodians, payment platforms, marketplaces, tokenisation platforms, and businesses accepting digital asset payments.
+Cardinal is designed for:
+
+- businesses accepting digital asset payments, including property and other high-value transactions
+- exchanges, payment platforms, and on-ramp or off-ramp providers
+- custodians, treasury vaults, and institutional asset-control teams
+- wallets, marketplaces, and tokenisation platforms
+
+These are target use cases and integration pathways. Availability varies by product, network, asset, and partner configuration. Review [Product Status](/product-status) before representing a capability as production-ready.

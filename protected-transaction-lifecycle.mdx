@@ -10,9 +10,10 @@ Cardinal is building one protected lifecycle around the working products. This d
 Transaction intent
 → Intelligence and simulation evidence
 → Enterprise policy decision
-→ ALLOW / REVIEW / BLOCK
-→ SafeSend, SafeReceive, direct flow, or Escrow
-→ Settlement events and audit record
+→ ALLOW / REVIEW / PROTECTED SETTLEMENT / BLOCK
+→ SafeSend, SafeReceive, direct flow, or conditional Escrow
+→ Continuous checks while value is pending
+→ Settlement events and Cardinal Trust Record
 ```
 
 <Warning title="Integration in progress">
@@ -35,10 +36,13 @@ Transaction intent
     Stop `BLOCK` decisions. Require the configured approval for `REVIEW` decisions.
   </Step>
   <Step title="Use the selected product">
-    Route approved activity through the existing SafeSend, SafeReceive, direct, or Escrow flow.
+    Let the approved policy route activity through the existing SafeSend, SafeReceive, direct, or Escrow flow. Higher-risk or higher-value transactions can require Protected Settlement.
+  </Step>
+  <Step title="Monitor pending settlement">
+    Re-screen the relevant parties at approved intervals. A material new signal pauses settlement and creates a review task; it never silently releases or changes the policy record.
   </Step>
   <Step title="Correlate settlement">
-    Bind transaction hashes and contract events to the original decision and display the outcome in the Portal.
+    Bind transaction hashes and contract events to the original decision and display the outcome in the Portal and future Transaction Passport.
   </Step>
 </Steps>
 
@@ -48,9 +52,12 @@ Keep the current buyer-and-seller and multisig Escrow implementations as the fou
 
 Bind compliance and counterparty approvals to escrow terms and the Cardinal security context before settlement. Treat milestone settlement and oracle conditions as longer-term work until a reviewed release confirms them.
 
+<Card title="Protected Settlement Engine" icon="route" href="/protected-settlement-engine">
+  Review the risk-aware settlement architecture and its delivery gates.
+</Card>
+
 ## Failure handling
 
 Follow the approved fail-closed policy when intelligence, simulation, policy, or evidence storage is unavailable.
 
 Do not bypass controls, lose the correlation record, or default to `ALLOW`.
-

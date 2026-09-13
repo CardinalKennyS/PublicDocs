@@ -72,8 +72,31 @@ The report retains:
 - the original decision, risk score, and check time
 - findings and matched policy rules
 - named evidence sources, confidence, freshness, and references
+- a source-of-funds and exposure-path summary when the approved evidence supports one
+- attributed exchange, custodian, service, or institution details with role, jurisdiction, verification state, address, and supporting reference
 - provider coverage and transaction-effects mode
 - methodology and limitations
+
+## Institution and bank-origin evidence
+
+Blockchain activity does not normally reveal a customer's bank account or bank name. Cardinal must not infer one from a wallet address alone.
+
+The report may display a named exchange, custodian, payment service, financial institution, or other entity only when an approved source supports the attribution. Suitable sources can include licensed intelligence, verified counterparty data, Travel Rule data, customer-supplied source-of-funds documents, or a confirmed business record.
+
+Each attribution should show:
+
+- entity name and type
+- role in the payment path, such as origin, intermediary, exchange, custodian, or destination
+- verification status and confidence
+- jurisdiction and identifiers when the source permits them
+- attributed blockchain address or transaction reference
+- evidence source, reference, observation time, and freshness
+
+If evidence supports ransomware, stolen-funds, sanctions, scam, mixer, illicit-service, or other exposure, the report should identify the category, path or relationship, confidence, severity, supporting source, and policy effect. It should not overstate indirect exposure as proof of criminal ownership.
+
+<Warning title="Demonstration data">
+  Demo reports may use fictional institution names and synthetic exposure paths. They must be labelled as demonstration evidence and must never be presented as a finding about a real bank, exchange, person, or wallet.
+</Warning>
 
 The live controlled pilot records report generation separately from the standard SafeReceive check. Customer charging, approved pricing, and treasury settlement must be configured before commercial billing is represented as active.
 
