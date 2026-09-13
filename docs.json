@@ -7,7 +7,7 @@
     "light": "#79DDF2",
     "dark": "#2396B5"
   },
-  "favicon": "https://app.cardinalweb3.com/favicon.svg",
+  "favicon": "https://cardinalweb3.com/favicon.svg",
   "navigation": {
     "pages": [
       {
@@ -23,7 +23,7 @@
         {
           "anchor": "Cardinal App",
           "icon": "arrow-up-right-from-square",
-          "href": "https://app.cardinalweb3.com"
+          "href": "https://cardinalweb3.com/app"
         },
         {
           "anchor": "GitHub",
@@ -46,7 +46,9 @@
         "pages": [
           "protection-api",
           "safesend",
+          "safereceive",
           "escrow",
+          "customer-portal-controls",
           "product-status"
         ]
       },
@@ -56,10 +58,8 @@
         "pages": [
           "intelligence-evidence",
           "policy-engine",
-          "safereceive",
           "transaction-simulation",
           "protected-transaction-lifecycle",
-          "customer-portal-controls",
           "delivery-horizons"
         ]
       },
@@ -98,12 +98,12 @@
   "logo": {
     "light": "/logo/cardinal-logo-light.png",
     "dark": "/logo/cardinal-logo-dark.png",
-    "href": "https://app.cardinalweb3.com"
+    "href": "https://cardinalweb3.com/app"
   },
   "navbar": {
     "links": [
       {
-        "href": "https://app.cardinalweb3.com",
+        "href": "https://cardinalweb3.com/app",
         "label": "Cardinal App"
       }
     ]

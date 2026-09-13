@@ -1,25 +1,59 @@
 ---
-title: "Customer Portal Controls"
-description: "Configure policies and review decisions, intelligence, approvals, and audit records."
-icon: "sliders"
+title: "Business Customer Portal"
+description: "Create payment requests and review payment decisions, evidence, customers, and transaction records."
+icon: "building"
 ---
 
-The existing Customer Portal is the control and evidence surface for the protected transaction lifecycle.
+The Business Customer Portal gives each organisation a separate operational view of its digital asset payment activity. It is designed for teams such as estate agencies, developers, professional services firms, payment businesses, exchanges, and treasury operators.
 
-<Warning title="30-day extension">
-  The Portal exists. Policy configuration, complete lifecycle audit, and expanded intelligence visibility are planned extensions. The browser is not the authoritative policy or risk engine.
+<Warning title="Controlled pilot">
+  A white-labelled property-payment portal and separate customer sign-in exist for controlled demonstration. Production identity, tenant isolation, billing, data retention, and role-based access still require security validation before real client onboarding. The browser is not the authoritative policy or risk engine.
 </Warning>
 
-## Planned controls
+<CardGroup cols={2}>
+  <Card title="Open customer sign-in" icon="right-to-bracket" href="https://cardinalweb3.com/portal/login">
+    Sign in to an organisation-specific controlled portal.
+  </Card>
+
+  <Card title="Open product gateway" icon="grid-2" href="https://cardinalweb3.com/app">
+    Choose the appropriate payment protection workflow.
+  </Card>
+</CardGroup>
+
+## Controlled property-payment journey
+
+1. The business creates a customer or transaction record, such as a Dubai property reservation or deposit.
+2. The portal creates a branded payment request with the property, amount, asset, network, reference, and destination details.
+3. The business sends the secure link to the prospective buyer.
+4. The buyer connects a wallet and reviews the payment details before submitting the transaction.
+5. SafeReceive screens the source wallet and applies the business policy.
+6. The portal records the payment, `ALLOW`, `REVIEW`, or `BLOCK` outcome, evidence, and follow-up action against the business transaction.
+7. An authorised user may generate a comprehensive report when deeper review is required.
+
+<Info>
+  The Northstar Properties material is fictional demonstration data. It shows how white-labelled property workflows can operate without representing a real customer, property, payment, or approval.
+</Info>
+
+## Portal controls
 
 | Area | Portal responsibility |
 | --- | --- |
+| Customers and transactions | Organise payment requests by customer, property, invoice, reservation, or internal reference. |
+| Payment requests | Create and share branded links with controlled amount, asset, network, destination, and expiry. |
+| Incoming payments | Display the source wallet, receiving wallet, asset, amount, status, and associated business record. |
 | Policies | Select and configure permitted rules and thresholds with version history. |
 | Decisions | Display `ALLOW`, `REVIEW`, or `BLOCK` and each matched rule. |
 | Intelligence | Display sanitized evidence, source, confidence, observation time, expiry, and degraded state. |
 | Approvals | Record required human, counterparty, compliance, or multisig approvals. |
 | Lifecycle | Correlate intent, decision, approval, contract action, and settlement outcome. |
 | Audit | Provide tenant-scoped, tamper-evident records and controlled exports. |
+| Reports | Generate and download a branded report linked to the original protection check. |
+
+## Organisation separation
+
+Each production customer must have its own organisation boundary, users, roles, policies, wallet allowlists, payment records, report records, branding, and audit history.
+
+Do not reuse demonstration credentials for a real customer. Production access must use approved identity controls, password protection, secure session handling, rate limiting, access revocation, and auditable administrative changes.
 
 ## Security boundaries
 
@@ -28,4 +62,5 @@ The existing Customer Portal is the control and evidence surface for the protect
 - Record the actor, time, policy version, reason, and previous value for configuration changes.
 - Do not let a user-interface change overwrite historical decisions.
 - Redact or hash sensitive evidence when retention or licensing terms require it.
-
+- Never place treasury private keys, seed phrases, provider secrets, or unrestricted API keys in the portal.
+- Require a new protection check when a payment's source, destination, network, token, amount, or policy changes.
