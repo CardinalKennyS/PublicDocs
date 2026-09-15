@@ -1,0 +1,67 @@
+---
+title: "Enterprise Admin Dashboard"
+description: "Operate Cardinal's connected protection, reporting, partner, usage, billing, fee, Escrow, and support views."
+icon: "gauge-high"
+---
+
+The Enterprise Admin Dashboard is Cardinal's internal controlled-pilot operations view. It reads protected operational data from the Cardinal Protection API and keeps product readiness separate from roadmap work.
+
+<Warning>
+The current dashboard is password-gated for authorised Cardinal team members. It is not yet a production identity-and-access system. Before broader operational use, add named users, multifactor authentication, role-based access, session controls, access revocation, and an auditable administrator-change history.
+</Warning>
+
+## Connected views
+
+| View | Current data | Boundary |
+| --- | --- | --- |
+| Dashboard | Protection-check totals, decision distribution, risk distribution, recorded reliability, latency, and recent activity | Figures describe recorded pilot traffic. They are not an SLA or proof of production provider coverage. |
+| Protection Checks | Incoming and outgoing decisions, wallet addresses, network, token, risk, evidence count, matched rules, reports, and source mode | `local_heuristic` and fixture results are demonstration or fallback evidence, not licensed intelligence about a real entity. |
+| Risk Reports | Generated-report metadata, references, payment context, decision, risk, partner, and pricing state | Report snapshots remain protected on the backend. "Not priced" means billing is not active for that record. |
+| API Usage | Endpoint, method, status, latency, partner, and time | Recorded requests only. Use a dedicated monitoring platform for uptime and alerting. |
+| Partners | Partner name, environment, status, and creation date | An environment label such as `PRODUCTION` identifies the API credential environment. It does not by itself prove mainnet settlement, licensed data coverage, or production customer readiness. |
+| API Keys | Masked key identifier, scopes, environment, last use, and status | Never display, log, or export the full secret after issuance. Production key lifecycle controls remain required. |
+| Billing / Usage | Partner plan, usage limits, and status | The live controlled pilot has no active billing record until an approved plan is assigned. |
+| SafeSend Fees | Protected-transfer amount, fee, status, recipient, and time | The current SafeSend flow is Arbitrum Sepolia testnet only. Empty data is expected until a recorded transfer exists. |
+| Escrow | Future contract-event and settlement reporting | The testnet Escrow product exists, but its event feed is not yet ingested into the dashboard. |
+| Support | Published contact and support-readiness checklist | This is not a ticket queue. Mailbox delivery, dedicated support intake, case ownership, priorities, and SLAs require separate verification. |
+
+## Metric interpretation
+
+Dashboard metrics must include their scope and observation window when used outside internal operations.
+
+- **API reliability** is the success rate of recorded requests in the displayed pilot dataset. Do not present it as contractual uptime.
+- **Average response time** is calculated from recorded API activity. It does not replace external latency monitoring.
+- **Threats detected** counts recorded `REVIEW` and `BLOCK` decisions according to the current implementation. It does not represent confirmed crimes, sanctions matches, or prevented financial loss.
+- **Decision distribution** describes the current dataset. Demonstration traffic can materially influence the percentages.
+
+## Current operational gaps
+
+The following data is not yet centrally ingested:
+
+- business-customer accounts, users, roles, and organisation settings;
+- customer-portal payment requests and their delivery state;
+- Escrow contract events and settlement reconciliation;
+- inbound support messages and tenant-scoped ticket history;
+- approved billing plans, invoicing, collection, and treasury reconciliation;
+- external service health, on-call alerts, and incident timelines.
+
+## Required production controls
+
+Before treating the dashboard as an enterprise operations console:
+
+1. Replace the shared pilot password with named identities, MFA, SSO where required, and least-privilege roles.
+2. Record every administrative read and change with actor, time, tenant, reason, and outcome.
+3. Separate demonstration, staging, pilot, and production data visibly and technically.
+4. Add pagination, filters, export controls, retention rules, and redaction for sensitive records.
+5. Connect customer-portal records, Escrow events, support cases, billing, reconciliation, and external observability.
+6. Define incident severity, ownership, escalation, response targets, and customer-notification procedures.
+7. Test tenant isolation and administrator access through an independent security review.
+
+<CardGroup cols={2}>
+  <Card title="Product status" icon="signal" href="/product-status">
+    Confirm the delivery state and production boundary for each Cardinal capability.
+  </Card>
+  <Card title="Support operations" icon="life-ring" href="/support">
+    Prepare a safe request and review the current support boundary.
+  </Card>
+</CardGroup>
