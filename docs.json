@@ -49,6 +49,7 @@
           "safereceive",
           "escrow",
           "customer-portal-controls",
+          "admin-dashboard",
           "commercial-model",
           "product-status"
         ]
@@ -100,7 +101,7 @@
   "logo": {
     "light": "/logo/cardinal-logo-light.png",
     "dark": "/logo/cardinal-logo-dark.png",
-    "href": "https://cardinalweb3.com/app"
+    "href": "https://cardinalweb3.com/"
   },
   "navbar": {
     "links": [
